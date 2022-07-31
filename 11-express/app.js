@@ -17,4 +17,18 @@ app.get('/sky/:id', (req, res, next) => {
   res.status(201).send('created');
 });
 
+app.get(
+  '/',
+  (req, res, next) => {
+    console.log('first');
+  },
+  (req, res, next) => {
+    console.log('first2');
+  }
+);
+
+app.get('/', (req, res, next) => {
+  console.log('second');
+});
+
 app.listen(8000);
