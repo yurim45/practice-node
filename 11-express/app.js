@@ -17,7 +17,7 @@ const app = express();
 //   res.status(201).send('created');
 // });
 
-app.use(express.json()); // 모든 request에 express에서 제공하는 json을 사용
+app.use(express.json());
 app.post('/', (req, res, next) => {
   console.log(req.body);
 });

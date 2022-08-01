@@ -41,6 +41,7 @@ app.get('/file2', (req, res, next) => {
 });
 
 // async/await 문
+// async라는 키워드로 인해 함수 자체는 비동기 하수
 // await를 했기 때문이 동기적인 코드이므로 try/catch 문으로 에러 핸들링 가능
 app.get('/file3', async (req, res) => {
   try {
