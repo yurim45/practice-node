@@ -13,7 +13,13 @@ app.use((req, res, next) => {
 });
 
 // 헤더를 정확히 알고 있어야 하고, 오타가 있을 경우, 매번 설정할 경우 번거롭기 때문에 미들웨어 사용 ➔ npm i cors
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://atnp.localhost:3000/'],
+    optionsSuccessStatus: 200,
+    credentials: true, //Access-Control-Allow-Credentials: true
+  })
+);
 
 app.get('/', (req, res) => {
   res.send('Welcome!');
