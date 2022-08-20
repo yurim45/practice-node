@@ -1,24 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-
-let TWEETS = [
-  {
-    id: '1',
-    name: 'April',
-    username: 'april',
-    text: 'hello!',
-    createdAt: Date.now().toString(),
-    url: '',
-  },
-  {
-    id: '2',
-    name: 'Ving9',
-    username: 'ving9',
-    text: 'ving9999999999!',
-    createdAt: Date.now().toString(),
-    url: '',
-  },
-];
+import * as tweetRepo from '../data/tseet/tweet.js';
 
 const router = express.Router();
 
@@ -27,15 +9,15 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
   const username = req.query.username;
   const data = username
-    ? TWEETS.filter((tweet) => tweet.username === username)
-    : TWEETS;
+    ? tweetRepo.getAllByUsername(username)
+    : tweetRepo.getAll();
   res.status(200).json(data);
 });
 
 // GET /tweet/:id
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  const data = TWEETS.find((tweet) => tweet.id === id);
+  const data = tweetRepo.getById(id);
   if (data) {
     res.status(200).json(data);
   } else {
@@ -46,14 +28,7 @@ router.get('/:id', (req, res, next) => {
 // POST /tweets
 router.post('/', (req, res, next) => {
   const { text, name, username } = req.body;
-  const newTweet = {
-    id: Date.now().toString(),
-    name,
-    username,
-    text,
-    createdAt: new Date(),
-  };
-  TWEETS = [newTweet, ...TWEETS];
+  const tweet = tweetRepo.create(text, name, username);
   res.status(201).json(newTweet);
 });
 
@@ -62,7 +37,7 @@ router.put('/:id', (req, res, next) => {
   const id = req.params.id;
   const { text } = req.body;
 
-  const tweet = TWEETS.find((tweet) => tweet.id === id);
+  const tweet = tweetRepo.update(id, text);
   if (tweet) {
     tweet.text = text;
     res.status(201).json(tweet);
@@ -74,7 +49,7 @@ router.put('/:id', (req, res, next) => {
 // DELETE /tweet/id
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
-  TWEETS = TWEETS.filter((tweet) => tweet.id !== id);
+  tweetRepo.deleteById(id);
   res.status(204);
 });
 
