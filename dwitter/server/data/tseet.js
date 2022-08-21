@@ -17,19 +17,19 @@ let TWEETS = [
   },
 ];
 
-export function getAll() {
+export async function getAll() {
   return TWEETS;
 }
 
-export function getAllByUsername(username) {
+export async function getAllByUsername(username) {
   return TWEETS.filter((tweet) => tweet.username === username);
 }
 
-export function getById(id) {
+export async function getById(id) {
   return TWEETS.find((tweet) => tweet.id === id);
 }
 
-export function create(text, name, username) {
+export async function create(text, name, username) {
   const newTweet = {
     id: Date.now().toString(),
     name,
@@ -41,7 +41,7 @@ export function create(text, name, username) {
   return TWEETS;
 }
 
-export function update(id, text) {
+export async function update(id, text) {
   const tweet = TWEETS.find((tweet) => tweet.id === id);
   if (tweet) {
     tweet.text = text;
@@ -49,6 +49,6 @@ export function update(id, text) {
   return tweet;
 }
 
-export function deleteById(id) {
+export async function deleteById(id) {
   TWEETS = TWEETS.filter((tweet) => tweet.id !== id);
 }
