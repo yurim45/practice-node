@@ -4,13 +4,13 @@ const emitter = new EventEmitter();
 const callback1 = (args) => {
   console.log('first callback - ', args);
 };
-emitter.on('ellie', callback1);
+emitter.on('april', callback1);
 
-emitter.on('ellie', (args) => {
+emitter.on('april', (args) => {
   console.log('second callback - ', args);
 });
 
-emitter.emit('ellie', { message: 1 });
-emitter.emit('ellie', { message: 2 });
+emitter.emit('april', { message: 1 });
+emitter.emit('april', { message: 2 });
 emitter.removeAllListeners();
-emitter.emit('ellie', { message: 3 });
+emitter.emit('april', { message: 3 });

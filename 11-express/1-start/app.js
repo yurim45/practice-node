@@ -8,7 +8,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/hello', (req, res, next) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).json({ name: 'Ellie', age: 0 });
+  res.status(200).json({ name: 'april', age: 0 });
 });
 
 app.use((req, res, next) => {

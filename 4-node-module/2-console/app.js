@@ -12,7 +12,7 @@ console.assert(2 === 3, 'not same!');
 console.assert(2 === 2, 'same!');
 
 // print object
-const student = { name: 'ellie', age: 20, company: { name: 'AC' } };
+const student = { name: 'april', age: 20, company: { name: 'AC' } };
 console.log(student);
 console.table(student);
 console.dir(student, { showHidden: true, colors: false, depth: 0 });

@@ -3,7 +3,7 @@ const fs = require('fs');
 const ejs = require('ejs');
 // const http2 = require('http2'); // https
 
-const name = 'Ellie';
+const name = 'april';
 const courses = [
   { name: 'HTML' },
   { name: 'CSS' },
