@@ -1,6 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-import * as tweetController from '../controller/tseet/tweet.js';
+import * as tweetController from '../controller/tweet/tweet.js';
 import { body } from 'express-validator';
 import { validate } from '../middleware/validator.js';
 
