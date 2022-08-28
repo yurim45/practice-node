@@ -4,6 +4,10 @@ import * as tweetController from '../controller/tweet/tweet.js';
 import { body } from 'express-validator';
 import { validate } from '../middleware/validator.js';
 
+// vaidation
+// sanitization
+// contract testing: Client - Server
+
 const router = express.Router();
 const validateTweet = [
   body('text').trim().isLength({ min: 3 }).withMessage('3글자 이상 입력하세요'),
